@@ -16,6 +16,6 @@ for i in range(a):
 v=np.array(lst,dtype='int16')
 
 
-print(lst)
+print(v)
 
 print(v.ndim, v.shape, v.data, v.dtype, v.strides)
