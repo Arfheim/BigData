@@ -15,3 +15,5 @@ v=np.array(lst,dtype='int16')
 
 print(v)
 print(v.ndim, v.shape, v.data, v.dtype, v.strides)
+
+#
