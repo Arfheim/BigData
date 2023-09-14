@@ -1,12 +1,7 @@
 import numpy as np
 import tkinter as tk #Built in GUI
 from tkinter import messagebox #popup
-
-def press_enter_key(ev):
-    click_button()
-    messagebox.showinfo('coordinate value', f"({ev.x}, {ev.y})")
-
-def click_button():
+def click_button(*args):
     try:
         r,c = map(int,en_row_column.get().split())
         matrix = np.random.randint(1,101,size=(r, c))
@@ -23,7 +18,7 @@ en_row_column = tk.Entry()
 btn_click = tk.Button(text="click me", command=click_button)
 
 #enter key binding with entry widget
-en_row_column.bind("<Return>", press_enter_key)
+en_row_column.bind("<Return>", click_button)
 
 #widget layout
 
