@@ -15,7 +15,7 @@ def click_button():
         messagebox.showerror('Error!',f"입력된 값이 없습니다.\n{err}")
 
 window = tk.Tk()
-window.title('numpy gui version v1.6')
+window.title('numpy gui version v1.8')
 window.geometry('300x150')
 #create widget
 lbl_result = tk.Label(text="random numpy 2d array")
@@ -30,6 +30,8 @@ en_row_column.bind("<Return>", press_enter_key)
 lbl_result.pack()
 en_row_column.pack(fill='x')
 btn_click.pack(fill='x')
+
+en_row_column.focus()
 
 window.mainloop()
 
