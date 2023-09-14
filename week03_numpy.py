@@ -4,6 +4,7 @@ from tkinter import messagebox #popup
 
 def press_enter_key(ev):
     click_button()
+    messagebox.showinfo('coordinate value', f"({ev.x}, {ev.y})")
 
 def click_button():
     try:
@@ -14,7 +15,7 @@ def click_button():
         messagebox.showerror('Error!',f"입력된 값이 없습니다.\n{err}")
 
 window = tk.Tk()
-window.title('numpy gui version v1.4')
+window.title('numpy gui version v1.6')
 window.geometry('300x150')
 #create widget
 lbl_result = tk.Label(text="random numpy 2d array")
