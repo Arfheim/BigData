@@ -2,34 +2,39 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+import tkinter as tk
 
-# Download and prepare the data
-life_satisfaction = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
+def predict_life_satisfaction() :
 
-# print(life_satisfaction.tail(5))
-# print(life_satisfaction.shape)
-# print(life_satisfaction.describe())
+    x = int(en_GDP_per_capita.get())
+    X_new = [[x]]
 
+    life_satisfaction = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
+    X = life_satisfaction[["GDP per capita (USD)"]].values
+    y = life_satisfaction[["Life satisfaction"]].values
 
-X = life_satisfaction[["GDP per capita (USD)"]].values
-y = life_satisfaction[["Life satisfaction"]].values
+    # life_satisfaction.plot(kind='scatter', grid=True,
+    #              x="GDP per capita (USD)", y="Life satisfaction")
+    # plt.axis([23_500, 62_500, 4, 9])
+    # plt.show()
 
-# print(X)
-# print(y)
+    model = LinearRegression()
 
-# draw scatter diagram
-life_satisfaction.plot(kind='scatter', grid=True,
-             x="GDP per capita (USD)", y="Life satisfaction")
-plt.axis([23_500, 62_500, 4, 9])
-plt.show()
+    model.fit(X, y)
 
-# model choice
-model = LinearRegression()
+    lbl_life_satisfaction.config(text=f"해당 국가의 삶의 만족도는 {model.predict(X_new)}로 예측됩니다.")
 
-# model train
-model.fit(X, y)
+if __name__ == "__main__":
+    window = tk.Tk()
+    window.title("삶의 만족도 예측 프로그램 v0.1")
+    window.geometry("400x150")
 
-# predict new GDP per capita (Cyprus 2020)
-X_new = [[31700]]
-print(life_satisfaction)
-print(model.predict(X_new))
+    lbl_life_satisfaction = tk.Label(text="아래 입력상자에 삶의 만족도를 알고 싶은\n국가의 1인당 GDP값을 입력하세요")
+    en_GDP_per_capita = tk.Entry(window)
+    btn_predict = tk.Button(window, text="예측", command=predict_life_satisfaction)
+
+    lbl_life_satisfaction.pack()
+    en_GDP_per_capita.pack(fill='x')
+    btn_predict.pack(fill='x')
+
+    window.mainloop()
