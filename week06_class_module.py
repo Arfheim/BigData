@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import tkinter as tk
-
+import jhlearn
 def predict_life_satisfaction() :
 
     x = int(en_GDP_per_capita.get())
@@ -18,7 +18,8 @@ def predict_life_satisfaction() :
     # plt.axis([23_500, 62_500, 4, 9])
     # plt.show()
 
-    model = LinearRegression()
+    #model = LinearRegression()
+    model = jhlearn.LinearRegression()
 
     model.fit(X, y)
 
