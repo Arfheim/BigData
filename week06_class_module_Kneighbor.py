@@ -4,6 +4,7 @@ import pandas as pd
 #from sklearn.linear_model import LinearRegression
 import tkinter as tk
 from sklearn.neighbors import KNeighborsRegressor
+import jhlearn
 
 def predict_life_satisfaction(*ev) :
     x = int(en_GDP_per_capita.get())
@@ -17,8 +18,9 @@ def predict_life_satisfaction(*ev) :
     #              x="GDP per capita (USD)", y="Life satisfaction")
     # plt.axis([23_500, 62_500, 4, 9])
     # plt.show()
-
-    model = KNeighborsRegressor(n_neighbors=3)
+    #print(x)
+    model = jhlearn.KNeighborsRegressor() #defalt n_neighbors
+    #model = KNeighborsRegressor(n_neighbors=3)
 
     model.fit(X, y)
 
@@ -28,7 +30,7 @@ if __name__ == "__main__":
 
 
     window = tk.Tk()
-    window.title("삶의 만족도 예측 프로그램 v0.1")
+    window.title("삶의 만족도 예측 프로그램 v0.6")
     window.geometry("400x150")
 
     lbl_life_satisfaction = tk.Label(text="아래 입력상자에 삶의 만족도를 알고 싶은\n국가의 1인당 GDP값을 입력하세요")
