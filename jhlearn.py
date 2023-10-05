@@ -3,8 +3,8 @@ class LinearRegression :
         self.slope = None
         self.intercept = None
 
-        def fit(self, X, y):
-            pass
+    def fit(self, X, y):
+        pass
 
-        def predict(self, X):
-            pass
+    def predict(self, X):
+        pass
